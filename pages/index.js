@@ -1,11 +1,11 @@
 import Head from "next/head";
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiFillCodepenCircle,
-} from "react-icons/ai";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import pictureProfile from "../public/picture-profile.png";
+import maltIcon from "../public/malt-icon.png";
+import linkedinIcon from "../public/linkedin-icon.png";
+import githubIcon from "../public/github-icon.png";
+import githubDarkIcon from "../public/github-dark-icon.png";
+import codepenIcon from "../public/codepen-icon.png";
 import code from "../public/code.png";
 import design from "../public/design.png";
 import consulting from "../public/consulting.png";
@@ -18,14 +18,62 @@ import web5 from "../public/web5.png";
 import web6 from "../public/web6.png";
 import { useTranslation } from 'next-i18next'
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import { initReactI18next } from "react-i18next";
+import { Fragment, useState, useEffect } from 'react'
+
+function useWindowWidth() {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowWidth;
+}
+
+function IconLinks(darkMode) {
+  const windowWidth = useWindowWidth();
+
+  let iconSize;
+  if (windowWidth <= 640) {          // Mobile
+    iconSize = 32;
+  } else if (windowWidth <= 1024) {   // Tablet
+    iconSize = 40;
+  } else {                            // Desktop
+    iconSize = 64;
+  }
+
+  return (
+    <div className="flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
+      <div className="cursor-pointer" onClick={() => window.open("https://linkedin.com/in/jules-clerc")}>
+        <Image src={linkedinIcon} width={iconSize} height={iconSize} alt="LinkedIn" />
+      </div>
+      <div className="cursor-pointer" onClick={() => window.open("https://github.com/Jules-gitclerc")}>
+        {darkMode ?
+          <Image src={githubDarkIcon} width={iconSize} height={iconSize} alt="GitHubDark" />
+          :
+          <Image src={githubIcon} width={iconSize} height={iconSize} alt="GitHubWhite" />
+        }
+      </div>
+      <div className="cursor-pointer" onClick={() => window.open("https://codepen.io/Surfy971")}>
+        <Image src={codepenIcon} width={iconSize} height={iconSize} alt="CodePen" />
+      </div>
+      <div className="cursor-pointer" onClick={() => window.open("https://www.malt.fr/profile/julesclerc1")}>
+        <Image src={maltIcon} width={iconSize} height={iconSize} alt="Malt" />
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const { t, i18n } = useTranslation()
-
-  console.log(i18n)
 
   return (
     <div className={darkMode ? "dark" : ""}>
@@ -112,19 +160,11 @@ export default function Home() {
               {t('subtitle')}
             </h3>
             <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
-             {t('description')}
+              {t('description')}
             </p>
-            <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
-              <div className="cursor-pointer" onClick={() => window.open("https://linkedin.com/in/jules-clerc")}>
-                <AiFillLinkedin />
-              </div>
-              <div className="cursor-pointer" onClick={() => window.open("https://github.com/Jules-gitclerc")}>
-                <AiFillGithub />
-              </div>
-              <div className="cursor-pointer" onClick={() => window.open("https://codepen.io/Surfy971")}>
-                <AiFillCodepenCircle />
-              </div>
-            </div>
+
+            <IconLinks darkMode={darkMode}/>
+
             <div className="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-96 md:w-96">
               <Image src={pictureProfile} layout="fill" objectFit="cover" />
             </div>
