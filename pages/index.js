@@ -531,7 +531,7 @@ export default function Home() {
                                 Portfolio
                             </h2>
                         </div>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
                             <div
                                 className="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
                                 <div
