@@ -209,9 +209,10 @@ export default function Home() {
                             </div>
 
                             <div className="lg:col-span-4 mt-10 lg:mt-0">
-                                <img className="w-full rounded-xl max-h-[700px] object-cover"
-                                     src={"https://images.unsplash.com/photo-1618477371303-b2a56f422d9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3164&q=80"}
-                                     alt="Image Description"/>
+                                <Image className="w-full rounded-xl max-h-[700px] object-cover"
+                                       src={"https://images.unsplash.com/photo-1618477371303-b2a56f422d9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3164&q=80"}
+                                       alt="Image Description" width={1000} height={700}
+                                />
                             </div>
                         </div>
                     </div>
@@ -430,28 +431,37 @@ export default function Home() {
                                             <div id="tabs-with-card-1" role="tabpanel"
                                                  aria-labelledby="tabs-with-card-item-1"
                                                  className={activeTab === 'tabs-with-card-1' ? '' : 'hidden'}>
-                                                <img
+                                                <Image
                                                     className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
                                                     src={"https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3272&q=80"}
-                                                    alt="Image Description"/>
+                                                    alt="Image Description"
+                                                    width={3272}
+                                                    height={2178}
+                                                />
                                             </div>
 
                                             <div id="tabs-with-card-2" role="tabpanel"
                                                  aria-labelledby="tabs-with-card-item-2"
                                                  className={activeTab === 'tabs-with-card-2' ? '' : 'hidden'}>
-                                                <img
+                                                <Image
                                                     className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
                                                     src={"https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3164&q=80"}
-                                                    alt="Image Description"/>
+                                                    alt="Image Description"
+                                                    width={3164}
+                                                    height={3955}
+                                                />
                                             </div>
 
                                             <div id="tabs-with-card-3" role="tabpanel"
                                                  aria-labelledby="tabs-with-card-item-3"
                                                  className={activeTab === 'tabs-with-card-3' ? '' : 'hidden'}>
-                                                <img
+                                                <Image
                                                     className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
                                                     src={"https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2426&q=80"}
-                                                    alt="Image Description"/>
+                                                    alt="Image Description"
+                                                    width={2426}
+                                                    height={1728}
+                                                />
                                             </div>
                                         </div>
                                     </div>
