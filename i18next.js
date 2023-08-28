@@ -42,7 +42,7 @@ const resources = {
                 nextjs: "Optimized performance for modern web applications",
             },
             portfolio: {
-                personnal: "Personal projects",
+                personal: "Personal projects",
                 professional: "Professional projects",
                 admin_dashboard: "Responsive Admin Dashboard",
                 hotel_dashboard: "Responsive Hotel Dashboard",
@@ -59,7 +59,9 @@ const resources = {
                 details: "Details",
                 company: "Company",
                 send: "Send",
-                info: "I'll get back to you in 1-2 business days."
+                info: "I'll get back to you soon.",
+                confirm: "Your message has been sent.",
+                description: "I will get back to you as soon as possible. Thank you for your interest in my work."
             }
         }
     },
@@ -103,7 +105,7 @@ const resources = {
                 nextjs: "Performance optimisée pour des applications web modernes",
             },
             portfolio: {
-                personnal: "Projets personnels",
+                personal: "Projets personnels",
                 professional: "Projets professionnels",
                 admin_dashboard: "Tableau de bord administrateur responsive",
                 hotel_dashboard: "Tableau de bord hôtel responsive",
@@ -120,7 +122,9 @@ const resources = {
                 details: "Détails",
                 company: "Entreprise",
                 send: "Envoyer",
-                info: "Je vous répondrai dans un délai de 1 à 2 jours ouvrables."
+                info: "Je vous répondrai bientôt.",
+                confirm: "Votre message a été envoyé.",
+                description: "Je vous répondrai dans les plus brefs délais. Merci pour votre intérêt pour mon travail."
             }
         }
     }
