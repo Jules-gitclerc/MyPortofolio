@@ -27,7 +27,7 @@ const resources = {
                     description: "I develop websites and web applications with the latest technologies. I can also help you create a website from scratch or update your existing website.",
                 },
                 section_2: {
-                    title: "UI/UX Design",
+                    title: "UI / UX Design",
                     description: "Design of intuitive and modern interfaces for an optimal user experience.",
                 },
                 section_3: {
@@ -64,7 +64,7 @@ const resources = {
                 description: "I will get back to you as soon as possible. Thank you for your interest in my work."
             },
             work: {
-                title: "My Missions",
+                title: "My Projects",
                 section_1: {
                     title: "Deferred Social Commitments Calculation Solution for Companies.",
                     description: "As a front-end developer, I developed a sophisticated web solution for Vinci Group, aimed at streamlining and optimizing the management of their deferred social commitments. This platform, designed according to the best industrial practices, is positioned as an essential tool for Vinci Group in their quest to combine operational efficiency with analytical precision.",
