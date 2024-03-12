@@ -1,18 +1,41 @@
 import Image from "next/image";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export default function ServiceSection({t}) {
     const [activeTab, setActiveTab] = useState("tabs-with-card-1");
-
     const tabsContent = {
         "tabs-with-card-1": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3272&q=80",
         "tabs-with-card-2": "https://images.unsplash.com/photo-1613909207039-6b173b755cc1?q=80&w=2147&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "tabs-with-card-3": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2426&q=80",
     };
+    const tabKeys = Object.keys(tabsContent);
+    const [previousTab, setPreviousTab] = useState(null);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const transitionDuration = 5000; // Transition duration in milliseconds
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const currentIndex = tabKeys.indexOf(activeTab);
+            const nextIndex = (currentIndex + 1) % tabKeys.length;
+            setPreviousTab(activeTab);
+            setActiveTab(tabKeys[nextIndex]);
+        }, transitionDuration);
+
+        return () => clearInterval(interval);
+    }, [activeTab, tabKeys]);
+
 
     const handleTabChange = (tabId) => {
-        setActiveTab(tabId);
+        if (tabId !== activeTab && !isTransitioning) {
+            setIsTransitioning(true);
+
+            setTimeout(() => {
+                setActiveTab(tabId);
+                setIsTransitioning(false);
+            }, transitionDuration);
+        }
     };
+
 
     return (
         <section id="services" className="bg-gray-100 dark:bg-gray-800 px-10 md:px-20 lg:px-40">
@@ -51,16 +74,33 @@ export default function ServiceSection({t}) {
                         </div>
                         <div className="lg:col-span-6">
                             <div className="relative">
-                                <Image
-                                    className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
-                                    src={tabsContent[activeTab]}
-                                    alt="Image Description"
-                                    width={3272}
-                                    height={2178}
-                                    layout="responsive"
-                                />
+                                {previousTab && (
+                                    <div
+                                        className={`absolute inset-0 transition-opacity duration-500 ${activeTab !== previousTab ? 'opacity-0' : 'opacity-100'}`}>
+                                        <Image
+                                            className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
+                                            src={tabsContent[previousTab]}
+                                            alt="Previous Image"
+                                            width={3272}
+                                            height={2178}
+                                            layout="responsive"
+                                        />
+                                    </div>
+                                )}
+                                <div
+                                    className={`transition-opacity duration-500 ${activeTab === previousTab ? 'opacity-0' : 'opacity-100'}`}>
+                                    <Image
+                                        className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
+                                        src={tabsContent[activeTab]}
+                                        alt="Current Image"
+                                        width={3272}
+                                        height={2178}
+                                        layout="responsive"
+                                    />
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

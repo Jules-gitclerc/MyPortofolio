@@ -261,10 +261,11 @@ export default function ProjectSection({t}) {
                         {t("work.title")}
                     </h2>
                 </div>
-                {sections.map((section, index) => (
-                    <div className={"w-full"}>
-                        <div key={index} className="grid md:grid-cols-2 gap-12">
-                            <div className="flex flex-col h-full justify-center lg:w-3/4">
+                {sections.map((section, sectionIndex) => (
+                    <div key={`section-${sectionIndex}`} className="w-full">
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <div
+                                className="flex flex-col h-full justify-center lg:w-3/4 transition-opacity duration-300">
                                 <h2 className="text-3xl text-gray-800 font-bold lg:text-3xl dark:text-white">
                                     {section.title}
                                 </h2>
@@ -273,17 +274,17 @@ export default function ProjectSection({t}) {
                                 </div>
                                 <div
                                     className="mt-5 inline-flex items-center gap-x-10 font-medium text-blue-600 dark:text-blue-500">
-                                    {section.icons.map((icon) => (
-                                        <div key={index}>{icon}</div>
+                                    {section.icons.map((icon, iconIndex) => (
+                                        <div key={`icon-${sectionIndex}-${iconIndex}`}>{icon}</div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="space-y-6 lg:space-y-10">
+                            <div className="space-y-6 lg:space-y-10 transition-opacity duration-300">
                                 {section.details.map((detail, detailIndex) => (
-                                    <div key={detailIndex} className="flex">
+                                    <div key={`detail-${sectionIndex}-${detailIndex}`} className="flex">
                                         <div
                                             className="flex-shrink-0 inline-flex justify-center items-center w-[46px] h-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
-                                            {icons[detailIndex].icon}
+                                            {icons[detailIndex % icons.length].icon}
                                         </div>
                                         <div className="ml-5 sm:ml-8">
                                             <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
@@ -297,13 +298,11 @@ export default function ProjectSection({t}) {
                                 ))}
                             </div>
                         </div>
-                        {
-                            index !== sections.length - 1 &&
+                        {sectionIndex !== sections.length - 1 && (
                             <hr className="w-full mt-10 border-t border-gray-200 dark:border-gray-700"/>
-                        }
+                        )}
                     </div>
                 ))}
-
             </div>
         </section>
     );
